@@ -1,16 +1,17 @@
 # terraform-exam
-# Summary: this architect will create separate workspaces for Dev and DB, with Dev workspace will create an EC2 instance running docker images for coffeshop application, while DB workspace will create a PostgreSQL using RDS and have automatic password management via Secrets Manager
+# Summary: 
+This architect will create separate workspaces for Dev and DB, with Dev workspace will create an EC2 instance running docker images for coffeshop application, while DB workspace will create a PostgreSQL using RDS and have automatic password management via Secrets Manager
 
 
 # Architect:
 **In Dev workspace:**
 -   Create a t3.micro EC2 instance, public subnet placement, SSH/HTTP security group access
 -   Then runs user-data.sh to:
--   Install Docker and Docker Compose
--   Pull and tag container images
--   Configure and start containers via docker-compose
--   Run all services from the images by order: Postgres -> Rabbitmq -> Product -> Counter -> the rest
--   To check if the web is online, access through http://<instance_ipv4>:8888
+- Install Docker and Docker Compose
+- Pull and tag container images
+- Configure and start containers via docker-compose
+- Run all services from the images by order: Postgres -> Rabbitmq -> Product -> Counter -> the rest
+- To check if the web is online, access through http://<instance_ipv4>:8888
 
 **In DB workspace:**
 -   Secret Management generates a random 16-character password with special characters and stores credentials in AWS Secrets Manager as db-credentials-db
