@@ -6,11 +6,11 @@ Architect:
 In Dev workspace, create:
 -   Create a t3.micro EC2 instance, public subnet placement, SSH/HTTP security group access
 -   Then runs user-data.sh to:
--       Install Docker and Docker Compose
--       Pull and tag container images
--       Configure and start containers via docker-compose
--       Run all services from the images by order: Postgres -> Rabbitmq -> Product -> Counter -> the rest
--       To check if the web is online, access through http://<instance_ipv4>:8888
+-   Install Docker and Docker Compose
+-   Pull and tag container images
+-   Configure and start containers via docker-compose
+-   Run all services from the images by order: Postgres -> Rabbitmq -> Product -> Counter -> the rest
+-   To check if the web is online, access through http://<instance_ipv4>:8888
 
 In DB workspace, create:
 -   Secret Management generates a random 16-character password with special characters and stores credentials in AWS Secrets Manager as db-credentials-db
@@ -24,26 +24,26 @@ output.tf: for testing purpose, will printout EC2 instance's IPv4 after ran Dev 
 
 Userguide:
 First run command:
-terraform init
+-       terraform init
 
 To use Dev workspace, run command:
-terraform workspace select dev || terraform workspace new dev
-terraform plan
-terraform apply -auto-approve
+-       terraform workspace select dev || terraform workspace new dev
+-       terraform plan
+-       terraform apply -auto-approve
 
 To use DB workspace, run command:
-terraform workspace select db || terraform workspace new db
-terraform plan
-terraform apply -auto-approve
+-       terraform workspace select db || terraform workspace new db
+-       terraform plan
+-       terraform apply -auto-approve
 
 To delete Dev workspace run, use command:
-terraform workspace select dev 
-terraform destroy -auto-approve
+-       terraform workspace select dev 
+-       terraform destroy -auto-approve
 
 To use DB workspace run, use command:
-terraform workspace select db
-terraform destroy -auto-approve
+-       terraform workspace select db
+-       terraform destroy -auto-approve
 
 To check for the homepage of the application, use http://<EC2_instance_IPv4>:8888
 To verify Secrets Manager Entry, run: (required AWS Cli installed)
-aws secretsmanager get-secret-value --secret-id db-credentials-${terraform.workspace} --region us-east-1
+-       aws secretsmanager get-secret-value --secret-id db-credentials-${terraform.workspace} --region us-east-1
