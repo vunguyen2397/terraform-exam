@@ -38,11 +38,11 @@ terraform apply -auto-approve
 
 To delete Dev workspace run, use command:
 terraform workspace select dev 
-terraform delete -auto-approve
+terraform destroy -auto-approve
 
 To use DB workspace run, use command:
 terraform workspace select db
-terraform delete -auto-approve
+terraform destroy -auto-approve
 
 To check for the homepage of the application, use http://<EC2_instance_IPv4>:8888
 To verify Secrets Manager Entry, run: (required AWS Cli installed)
